@@ -50,4 +50,31 @@ public class ClienteDAO {
         }
         return null;
     }
+    
+    public boolean insertAll(Cliente c){
+        try{
+            String sql = "INSERT * INTO Tbl_Cliente";//comando para ir na tabela do BD
+            PreparedStatement ps = dataSource.getConnection().prepareStatement(sql); // traduza esse comando para um do sql
+            //result set, conjunto, é a representacao do select
+            
+            ResultSet rs = ps.executeQuery(); // sempre aponta para uma posicao de antes dos resultados
+            //se houver um registro ele começa recuperar antes deles
+            ArrayList<Cliente> lista = new ArrayList<Cliente>();
+            while(rs.next()){
+                Cliente cli = new Cliente();
+                cli.setIdade(rs.getInt("Idade")); //nome do atributo na tabela.
+                cli.setNome(rs.getString("Nome"));
+                lista.add(cli);
+                //fazer isto para todos os atributos
+            }
+            ps.close();
+            return true;
+                    
+        }catch(SQLDataException ex){
+            System.err.println("Erro ao recuperar dados "+ex.getMessage());
+        }catch(Exception ex){
+            System.err.println("Erro geral " + ex.getMessage());
+        }
+        return false;
+    }
 }

@@ -15,6 +15,12 @@ public class Cliente {
     private String endereco;
     int n_conta;
 
+    public Cliente(String nome, int idade, String endereco, int n_conta){
+        this.nome = nome;
+        this.idade = idade;
+        this.endereco = endereco;
+        this.n_conta = n_conta;
+    }
     public Cliente() {
     }
 

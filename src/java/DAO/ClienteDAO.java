@@ -25,7 +25,7 @@ public class ClienteDAO {
         this.dataSource = dataSource; 
         
     }
-    public ArrayList<Cliente> readAll(){
+    public ArrayList<Cliente> readAll_Cliente(){
         try{
             String sql = "SELECT * FROM Cliente";//comando para ir na tabela do BD
             PreparedStatement ps = dataSource.getConnection().prepareStatement(sql); // traduza esse comando para um do sql
@@ -53,33 +53,32 @@ public class ClienteDAO {
         return null;
     }
     
-    /*public boolean insertAll(Cliente c){
+    public boolean insertAll_Cliente(ArrayList<Cliente> vetCli){
         //mandar para o Banco.16:27:26	delete from dbzivi.Tbl_Cliente where Nome = 'Denise'	Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.	0.00080 sec
 
-        
+      
         try{
-            String sql = "INSERT * INTO Tbl_Cliente";//comando para ir na tabela do BD
+            //inserindo
+            String sql = "INSERT INTO dbzivi.Cliente (nome, idade, endereco, id_conta) values (?,?,?,?)";
+
             PreparedStatement ps = dataSource.getConnection().prepareStatement(sql); // traduza esse comando para um do sql
-            //result set, conjunto, é a representacao do select
             
-            ResultSet rs = ps.executeQuery(); // sempre aponta para uma posicao de antes dos resultados
-            //se houver um registro ele começa recuperar antes deles
-            ArrayList<Cliente> lista = new ArrayList<Cliente>();
-            while(rs.next()){
-                Cliente cli = new Cliente();
-                cli.setIdade(rs.getInt("Idade")); //nome do atributo na tabela.
-                cli.setNome(rs.getString("Nome"));
-                lista.add(cli);
-                //fazer isto para todos os atributos
-            }
+            for(Cliente c: vetCli){
+                //posicoes na tabela do BD
+                ps.setString(1, c.getNome());
+                ps.setInt(2, c.getIdade());
+                ps.setString(3, c.getEndereco());
+                ps.setInt(4, c.getN_conta());
+                ps.executeUpdate();
+            }  
             ps.close();
             return true;
                     
         }catch(SQLDataException ex){
-            System.err.println("Erro ao recuperar dados "+ex.getMessage());
+            System.err.println("[Cliente] - Erro ao recuperar dados "+ex.getMessage());
         }catch(Exception ex){
-            System.err.println("Erro geral " + ex.getMessage());
+            System.err.println("[Cliente] - Erro geral " + ex.getMessage());
         }
         return false;
-    } */
+    }
 }

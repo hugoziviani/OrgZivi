@@ -10,14 +10,13 @@ import java.util.ArrayList;
  */
 public class ContaDAO {
     private DataSource dataSource;
+    
     public ContaDAO(DataSource dataSource){
-        //
+    
         this.dataSource = dataSource; 
         
     }
-    
-    
-     public ArrayList<Conta> readAll(){
+    public ArrayList<Conta> readAll_Contas(){
         try{
             String sql = "SELECT * FROM Conta";//comando para ir na tabela do BD
             PreparedStatement ps = dataSource.getConnection().prepareStatement(sql); // traduza esse comando para um do sql
@@ -29,7 +28,7 @@ public class ContaDAO {
                 Conta conta = new Conta();
              
                 conta.setId_conta(rs.getInt("id_conta"));
-                conta.setSaldo(rs.getDouble("saldo"));
+                conta.setSaldo(rs.getFloat("saldo"));
                 
                 lista.add(conta);
                 //fazer isto para todos os atributos
@@ -38,12 +37,38 @@ public class ContaDAO {
             return lista;
                     
         }catch(SQLDataException ex){
-            System.err.println("Erro ao recuperar dados "+ex.getMessage());
+            System.err.println("[Conta] - Erro ao recuperar dados "+ex.getMessage());
         }catch(Exception ex){
-            System.err.println("Erro geral " + ex.getMessage());
+            System.err.println("[Conta] - Erro geral " + ex.getMessage());
         }
         return null;
     }
-    
-    
+    public boolean insertAll_Contas(ArrayList<Conta> vetConta){
+        //mandar para o Banco.16:27:26	delete from dbzivi.Tbl_Cliente where Nome = 'Denise'	Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.	0.00080 sec
+
+      
+        try{
+            //inserindo
+            String sql = "INSERT INTO dbzivi.Conta (id_conta, saldo) values (?,?)";
+
+            PreparedStatement ps = dataSource.getConnection().prepareStatement(sql); // traduza esse comando para um do sql
+            
+            for(Conta c: vetConta){
+                //posicoes na tabela do BD
+                ps.setInt(1, c.getId_conta());
+                ps.setFloat(2, c.getSaldo());
+
+                ps.executeUpdate();
+            }  
+            ps.close();
+            return true;
+                    
+        }catch(SQLDataException ex){
+            System.err.println("[Conta] - Erro ao recuperar dados "+ex.getMessage());
+        }catch(Exception ex){
+            System.err.println("[Conta] - Erro geral " + ex.getMessage());
+        }
+        return false;
+    }
+  
 }

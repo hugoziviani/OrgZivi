@@ -24,13 +24,28 @@ public class MainTeste {
         DataSource ds = new DataSource();
         //recuperar a lista de clientes
         
+        /*
+        ArrayList <Cliente> cliInsert = new ArrayList<Cliente>();
+        cliInsert.add(new Cliente("Roberval1", 337, "Rua HAHAHAHAHAHA", 24904));
+        cliInsert.add(new Cliente("Roberval2", 337, "Rua hehehehehe", 22333));
+        */
+        
+        
+        
+        
+        
+        
         ClienteDAO cliDao = new ClienteDAO (ds);
         ContaDAO contaDao = new ContaDAO (ds);
         TransacaoDAO transacaoDao = new TransacaoDAO (ds);
         
-        ArrayList <Cliente> listaCli = cliDao.readAll();
-        ArrayList <Conta> listaCon = contaDao.readAll();
+        ArrayList <Cliente> listaCli = cliDao.readAll_Cliente();
+        ArrayList <Conta> listaCon = contaDao.readAll_Contas();
         ArrayList <Transacao> listaTrans = transacaoDao.readAll();
+        
+        
+        //if(cliDao.insertAll_Cliente(cliInsert)) System.out.println("Clientes Inseridos");
+        
         
         if(listaCli !=null){
             for(Cliente c : listaCli){
@@ -49,10 +64,13 @@ public class MainTeste {
         System.out.println("\n\nTRANSACOES:::\n\n");
         if(listaTrans !=null){
             for(Transacao tr: listaTrans){
-            tr.printTransacao();
+                tr.printTransacao();
                 System.out.println("");
             }
         }
+        
+        
+        
         ds.closeDataSource();//fecha a conexão com o BD
     }
     

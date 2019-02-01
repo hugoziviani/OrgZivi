@@ -11,11 +11,11 @@ package Model;
  */
 public class Conta {
     private int id_conta;
-    private double saldo;
+    private float saldo;
 
     public Conta() {
         this.id_conta = 0;
-        this.saldo = 0.0;
+        this.saldo = 0;
     }
 
     public int getId_conta() {
@@ -24,10 +24,10 @@ public class Conta {
     public void setId_conta(int id_conta) {
         this.id_conta = id_conta;
     }
-    public double getSaldo() {
+    public float getSaldo() {
         return saldo;
     }
-    public void setSaldo(double saldo) {
+    public void setSaldo(float saldo) {
         this.saldo = saldo;
     }
     

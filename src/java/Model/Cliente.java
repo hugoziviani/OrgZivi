@@ -12,38 +12,41 @@ package Model;
 public class Cliente {
     private String nome;
     private int idade;
+    private String endereco;
+    int n_conta;
 
     public Cliente() {
     }
 
-    /**
-     * @return the nome
-     */
     public String getNome() {
         return nome;
     }
-
-    /**
-     * @param nome the nome to set
-     */
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    /**
-     * @return the idade
-     */
     public int getIdade() {
         return idade;
     }
-
-    /**
-     * @param idade the idade to set
-     */
     public void setIdade(int idade) {
         this.idade = idade;
     }
+    public String getEndereco() {
+        return endereco;
+    }
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+    public int getN_conta() {
+        return n_conta;
+    }
+    public void setN_conta(int n_conta) {
+        this.n_conta = n_conta;
+    }
     
+    
+    public void printCliente(){    
+        System.out.printf("%s, %d, %s, %d",this.getNome(), this.getIdade(), this.getEndereco(), this.getN_conta());
+    }
     
     
     

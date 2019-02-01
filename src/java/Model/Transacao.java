@@ -12,14 +12,18 @@ package Model;
 public class Transacao {
     private int id_conta;
     private String data_hora;
-    private double valor;
+    private float valor;
 
     public Transacao() {
         this.id_conta = 0;
         this.data_hora = "";
-        this.valor = 0.0;
+        this.valor = 0.0f;
     }
-    
+    public Transacao(int id_conta, String data_hora, float valor) {
+        this.id_conta = id_conta;
+        this.data_hora = data_hora;
+        this.valor = valor;
+    }
     public int getId_conta() {
         return id_conta;
     }
@@ -32,10 +36,10 @@ public class Transacao {
     public void setData_hora(String data_hora) {
         this.data_hora = data_hora;
     }
-    public double getValor() {
+    public float getValor() {
         return valor;
     }
-    public void setValor(double valor) {
+    public void setValor(float valor) {
         this.valor = valor;
     }
     

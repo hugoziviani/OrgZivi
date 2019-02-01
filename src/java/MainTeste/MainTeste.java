@@ -13,6 +13,7 @@ import Model.Cliente;
 import Model.Conta;
 import Model.Transacao;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -22,16 +23,40 @@ public class MainTeste {
     
     public static void main (String args[]){
         DataSource ds = new DataSource();
-        //recuperar a lista de clientes
+        ClienteDAO cliDao = new ClienteDAO(ds);
+        Cliente buscado = new Cliente();
+        buscado = cliDao.findClienteDB("Roberval", 0);
+        buscado.printCliente();
         
+        
+    }
+    // testar algumas funcoes
+    
+    public static void buscaCliente(){
+        
+    }
+    public void testesMain(){
+    
+    DataSource ds = new DataSource();
+        //recuperar a lista de clientes
+       
         /*
         ArrayList <Cliente> cliInsert = new ArrayList<Cliente>();
         cliInsert.add(new Cliente("Roberval1", 337, "Rua HAHAHAHAHAHA", 24904));
         cliInsert.add(new Cliente("Roberval2", 337, "Rua hehehehehe", 22333));
+        ArrayList<Conta> contaInsert = new ArrayList<Conta>();
+        contaInsert.add(new Conta(4004332, 220.99f));
+        contaInsert.add(new Conta(4004334, 220.99f));
+        contaInsert.add(new Conta(4004335, 220.99f));
+        
+        
+        ArrayList <Transacao> transInsert = new ArrayList<Transacao>();
+        transInsert.add(new Transacao(400329, "2/2/1900", 2.3f));
+        transInsert.add(new Transacao(400329, "2/2/1900", 2.3f));
+        transInsert.add(new Transacao(400329, "2/2/1900", 2.3f));
+        transInsert.add(new Transacao(400329, "2/2/1900", 2.3f));
+        
         */
-        
-        
-        
         
         
         
@@ -41,10 +66,13 @@ public class MainTeste {
         
         ArrayList <Cliente> listaCli = cliDao.readAll_Cliente();
         ArrayList <Conta> listaCon = contaDao.readAll_Contas();
-        ArrayList <Transacao> listaTrans = transacaoDao.readAll();
+        ArrayList <Transacao> listaTrans = transacaoDao.readAll_Transacao();
         
         
         //if(cliDao.insertAll_Cliente(cliInsert)) System.out.println("Clientes Inseridos");
+        //if(contaDao.insertAll_Contas(contaInsert))System.out.println("Contas inseridas");
+        //if(transacaoDao.insertAll_Transacao(transInsert))System.out.println("Transacoes inseridas");
+        
         
         
         if(listaCli !=null){
@@ -72,6 +100,9 @@ public class MainTeste {
         
         
         ds.closeDataSource();//fecha a conexão com o BD
+    
+    
+    
     }
     
 }

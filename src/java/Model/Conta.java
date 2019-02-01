@@ -17,6 +17,10 @@ public class Conta {
         this.id_conta = 0;
         this.saldo = 0;
     }
+    public Conta(int id_conta, float saldo) {
+        this.id_conta = id_conta;
+        this.saldo = saldo;
+    }
 
     public int getId_conta() {
         return id_conta;

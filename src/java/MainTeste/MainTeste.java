@@ -8,8 +8,10 @@ package MainTeste;
 import DAO.ClienteDAO;
 import DAO.ContaDAO;
 import DAO.DataSource;
+import DAO.TransacaoDAO;
 import Model.Cliente;
 import Model.Conta;
+import Model.Transacao;
 import java.util.ArrayList;
 
 /**
@@ -24,9 +26,11 @@ public class MainTeste {
         
         ClienteDAO cliDao = new ClienteDAO (ds);
         ContaDAO contaDao = new ContaDAO (ds);
+        TransacaoDAO transacaoDao = new TransacaoDAO (ds);
         
         ArrayList <Cliente> listaCli = cliDao.readAll();
         ArrayList <Conta> listaCon = contaDao.readAll();
+        ArrayList <Transacao> listaTrans = transacaoDao.readAll();
         
         if(listaCli !=null){
             for(Cliente c : listaCli){
@@ -38,6 +42,14 @@ public class MainTeste {
         if(listaCon !=null){
             for(Conta ct: listaCon){
             ct.printConta();
+                System.out.println("");
+            }
+        }
+        
+        System.out.println("\n\nTRANSACOES:::\n\n");
+        if(listaTrans !=null){
+            for(Transacao tr: listaTrans){
+            tr.printTransacao();
                 System.out.println("");
             }
         }

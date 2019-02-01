@@ -23,7 +23,7 @@ public class MainTeste {
     
     public static void main (String args[]){
         
-        buscarTransacoes()
+        
         
     }
     // testar algumas funcoes

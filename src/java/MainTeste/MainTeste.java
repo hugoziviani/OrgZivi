@@ -6,8 +6,10 @@
 package MainTeste;
 
 import DAO.ClienteDAO;
+import DAO.ContaDAO;
 import DAO.DataSource;
 import Model.Cliente;
+import Model.Conta;
 import java.util.ArrayList;
 
 /**
@@ -21,12 +23,22 @@ public class MainTeste {
         //recuperar a lista de clientes
         
         ClienteDAO cliDao = new ClienteDAO (ds);
+        ContaDAO contaDao = new ContaDAO (ds);
         
-        ArrayList <Cliente> lista = cliDao.readAll();
+        ArrayList <Cliente> listaCli = cliDao.readAll();
+        ArrayList <Conta> listaCon = contaDao.readAll();
         
-        if(lista!=null){
-            for(Cliente c : lista){
-                System.out.println("Nome: "+ c.getNome()+"Idade: "+c.getIdade());
+        if(listaCli !=null){
+            for(Cliente c : listaCli){
+                c.printCliente();
+                System.out.println("");
+            }
+        }
+        System.out.println("\n\nCONTAS:::\n\n");
+        if(listaCon !=null){
+            for(Conta ct: listaCon){
+            ct.printConta();
+                System.out.println("");
             }
         }
         ds.closeDataSource();//fecha a conexão com o BD

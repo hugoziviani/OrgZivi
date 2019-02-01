@@ -51,7 +51,7 @@ public class Cliente {
     
     
     public void printCliente(){    
-        System.out.printf("%s %d %s %d \n",this.getNome(), this.getIdade(), this.getEndereco(), this.getN_conta());
+        System.out.printf("Nome: %s Idade: %d Endereço: %s Conta: %d \n",this.getNome(), this.getIdade(), this.getEndereco(), this.getN_conta());
     }
     
     

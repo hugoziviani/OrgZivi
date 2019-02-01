@@ -23,31 +23,52 @@ public class MainTeste {
     
     public static void main (String args[]){
         
+       //insereTransacao (new Transacao (40000, "OnteOnteem", 33.4f ));
+       
+        buscaTransacoes(40000);
         
         
     }
     // testar algumas funcoes
-    public static void buscaTransacoes(int conta){
-        DataSource ds = new DataSource();
-        TransacaoDAO tranDao = new TransacaoDAO(ds);
-        ArrayList <Transacao> tr = new ArrayList<Transacao>();
-        tr = tranDao.transacoesDeUmaConta(conta);
-        tr.toString();
-        
-    }
     public static void buscaCliente(String nome, int conta){
         DataSource ds = new DataSource();
         ClienteDAO cliDao = new ClienteDAO(ds);
         Cliente buscado = new Cliente();
-        buscado = cliDao.findClienteDB(nome, conta);
+        buscado = cliDao.readOne_Cliente(nome, conta);
         buscado.printCliente();
     }
     public static void buscaConta (int conta){
         DataSource ds = new DataSource();
         ContaDAO contaDao = new ContaDAO(ds);
         Conta buscada = new Conta();
-        buscada = contaDao.findContaDB(conta);
+        buscada = contaDao.readOne_Contas(conta);
         buscada.printConta();
+    }
+    public static void buscaTransacoes(int conta){
+        DataSource ds = new DataSource();
+        TransacaoDAO tranDao = new TransacaoDAO(ds);
+        ArrayList <Transacao> tr = new ArrayList<Transacao>();
+        tr = tranDao.readOne_Transacoes(conta);
+        for(Transacao t : tr){
+            t.printTransacao();
+        }
+        
+    }
+    public static void insereCliente(Cliente c){
+        DataSource ds = new DataSource();
+        ClienteDAO cliDao = new ClienteDAO (ds);
+        if(cliDao.insertOne_Cliente(c))System.out.println("Cliente " + c.getNome() + " inserido com sucesso!");
+    }
+    public static void insereConta(Conta c){
+        DataSource ds = new DataSource();
+        ContaDAO contaDao = new ContaDAO(ds);
+        if(contaDao.insertOne_Contas(c)) System.out.println("Conta " + c.getId_conta()+ " inserida com sucesso!");
+    
+    }
+    public static void insereTransacao (Transacao t){
+        DataSource ds = new DataSource();
+        TransacaoDAO transDao = new TransacaoDAO(ds);
+        if(transDao.insertOne_Transacao(t)) System.out.println("Transacao de " + t.getValor()+ " inserida com sucesso!");
     }
     public void testesMain(){
     

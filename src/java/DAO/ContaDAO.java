@@ -70,5 +70,27 @@ public class ContaDAO {
         }
         return false;
     }
+    public Conta findContaDB (int contaParaBuscar){
+            try{
+                String sql = "SELECT * FROM Conta where id_conta = "+ contaParaBuscar;
+                PreparedStatement ps = dataSource.getConnection().prepareStatement(sql); 
+
+                ResultSet rs = ps.executeQuery();
+
+                Conta con = new Conta();
+                if(rs.next()){
+                    con.setId_conta(rs.getInt("id_conta"));
+                    con.setSaldo(rs.getFloat("saldo"));
+                }
+                ps.close();
+                return con;// lista.get(0);
+
+            }catch(SQLDataException ex){
+                System.err.println("[Conta] - Erro ao recuperar dados "+ex.getMessage());
+            }catch(Exception ex){
+                System.err.println("[Conta] - Erro geral " + ex.getMessage());
+            }
+            return null;
+    }
   
 }

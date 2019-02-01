@@ -34,8 +34,8 @@ public class Conta {
     public void setSaldo(float saldo) {
         this.saldo = saldo;
     }
-    
+ 
     public void printConta(){    
-        System.out.printf("%d, %f", this.getId_conta(), this.getSaldo());
+        System.out.printf("Numero da Conta: %d, Saldo: %f\n", this.getId_conta(), this.getSaldo());
     }
 }

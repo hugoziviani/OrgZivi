@@ -80,10 +80,6 @@ public class ClienteDAO {
         }
         return false;
     }
-    
-   
-    
-    
     public Cliente findClienteDB (String nomeParaBuscar, int contaParaBuscar){
         if(contaParaBuscar > 0){
             try{

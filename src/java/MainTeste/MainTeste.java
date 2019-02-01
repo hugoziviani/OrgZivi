@@ -22,18 +22,32 @@ import java.util.Date;
 public class MainTeste {
     
     public static void main (String args[]){
-        DataSource ds = new DataSource();
-        ClienteDAO cliDao = new ClienteDAO(ds);
-        Cliente buscado = new Cliente();
-        buscado = cliDao.findClienteDB("Roberval", 0);
-        buscado.printCliente();
         
+        buscarTransacoes()
         
     }
     // testar algumas funcoes
-    
-    public static void buscaCliente(){
+    public static void buscaTransacoes(int conta){
+        DataSource ds = new DataSource();
+        TransacaoDAO tranDao = new TransacaoDAO(ds);
+        ArrayList <Transacao> tr = new ArrayList<Transacao>();
+        tr = tranDao.transacoesDeUmaConta(conta);
+        tr.toString();
         
+    }
+    public static void buscaCliente(String nome, int conta){
+        DataSource ds = new DataSource();
+        ClienteDAO cliDao = new ClienteDAO(ds);
+        Cliente buscado = new Cliente();
+        buscado = cliDao.findClienteDB(nome, conta);
+        buscado.printCliente();
+    }
+    public static void buscaConta (int conta){
+        DataSource ds = new DataSource();
+        ContaDAO contaDao = new ContaDAO(ds);
+        Conta buscada = new Conta();
+        buscada = contaDao.findContaDB(conta);
+        buscada.printConta();
     }
     public void testesMain(){
     

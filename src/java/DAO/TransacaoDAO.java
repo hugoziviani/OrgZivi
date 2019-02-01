@@ -23,7 +23,7 @@ public class TransacaoDAO {
     }
     public ArrayList<Transacao> readAll(){
         try{
-            String sql = "SELECT * FROM Cliente";//comando para ir na tabela do BD
+            String sql = "SELECT * FROM Transacao";//comando para ir na tabela do BD
             PreparedStatement ps = dataSource.getConnection().prepareStatement(sql); // traduza esse comando para um do sql
             //result set, conjunto, é a representacao do select
             ResultSet rs = ps.executeQuery(); // sempre aponta para uma posicao de antes dos resultados

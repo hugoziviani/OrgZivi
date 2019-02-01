@@ -40,7 +40,7 @@ public class Transacao {
     }
     
     public void printTransacao(){
-        System.out.printf("%d,%s,%f", this.getId_conta(), this.data_hora, this.getValor());
+        System.out.printf("%s %s %d %s %f", "Data: "+this.getData_hora()," Origem:", this.getId_conta()," Valor:", this.getValor());
     }
     
     

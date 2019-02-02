@@ -23,9 +23,7 @@ public class MainTeste {
     
     public static void main (String args[]){
         
-       //insereTransacao (new Transacao (40000, "OnteOnteem", 33.4f ));
        
-        buscaTransacoes(40000);
         
         
     }

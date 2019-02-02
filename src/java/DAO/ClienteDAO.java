@@ -164,6 +164,33 @@ public class ClienteDAO {
         
     }
     
-   
-    
+   /*
+    public boolean update_Cloente(Cliente antigoC, Cliente novoC){
+        try{
+            //atualizando pelo nome
+            String sql = "UPDATE Cliente SET nome = ? , idade = ? , endereco = ? , id_conta = ?  WHERE nome = ?";
+
+            PreparedStatement ps = dataSource.getConnection().prepareStatement(sql); // traduza esse comando para um do sql
+            
+            
+                //posicoes na tabela do BD
+                ps.setString(1, c.getNome());
+                ps.setInt(2, c.getIdade());
+                ps.setString(3, c.getEndereco());
+                ps.setInt(4, c.getN_conta());
+                ps.setInt (5,  )
+                ps.executeUpdate();
+              
+            ps.close();
+            return true;
+                    
+        }catch(SQLDataException ex){
+            System.err.println("[Cliente] - Erro ao atualizar dados "+ex.getMessage());
+        }catch(Exception ex){
+            System.err.println("[Cliente] - Erro geral " + ex.getMessage());
+        }
+        return false;
+        
+    }
+    */
 }

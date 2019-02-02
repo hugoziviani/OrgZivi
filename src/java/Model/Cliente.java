@@ -13,7 +13,7 @@ public class Cliente {
     private String nome;
     private int idade;
     private String endereco;
-    int n_conta;
+    private int n_conta;
 
     public Cliente(String nome, int idade, String endereco, int n_conta){
         this.nome = nome;

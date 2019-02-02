@@ -23,12 +23,8 @@ public class MainTeste {
     
     public static void main (String args[]){
         
-        Date dataAtual = new Date();
-        
-        int n_conta = 40041;
-        String identificcao = dataAtual.toString()+"-"+ String.valueOf(n_conta);
-        
-        insereTransacao(new Transacao (identificcao, n_conta, 2.3f));
+        buscaTransacoes(40041);
+        removeTransacao(new Transacao ("Sat Feb 02 13:42:20 BRST 201940041",0,0f));
     }
     // CLIENTE
     public static void insereCliente (Cliente c){
@@ -108,7 +104,6 @@ public class MainTeste {
     
     
     }
-    
     
     public void testesMain(){
     

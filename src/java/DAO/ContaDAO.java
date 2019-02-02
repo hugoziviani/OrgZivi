@@ -118,4 +118,49 @@ public class ContaDAO {
             }
             return null;
     }
+    
+    public boolean update_Conta(Conta antiga, Conta nova){
+        
+            try{
+                
+                String sql = "UPDATE Conta SET id_conta = ? , saldo = ?  WHERE id_conta = ?";
+
+                PreparedStatement ps = dataSource.getConnection().prepareStatement(sql); // traduza esse comando para um do sql
+                    //posicoes na tabela do BD
+                    ps.setInt(1, nova.getId_conta());
+                    ps.setFloat(2, nova.getSaldo());
+                    ps.setInt(3, antiga.getId_conta());
+                    ps.executeUpdate();
+                ps.close();
+                System.out.println("Conta atualizada com sucesso");
+                return true;
+
+            }catch(SQLDataException ex){
+                System.err.println("[Conta] - Erro ao atualizar dados "+ex.getMessage());
+            }catch(Exception ex){
+                System.err.println("[Conta] - Erro geral " + ex.getMessage());
+            }
+        
+        return false;
+        
+    }
+    public boolean delete_Conta(Conta c){
+        if(c.getId_conta() > 0){
+            try {
+                String sql = "DELETE FROM Conta WHERE id_conta = ?";
+                PreparedStatement ps = dataSource.getConnection().prepareStatement(sql);
+                ps.setInt(1, c.getId_conta());
+                ps.executeUpdate();
+                ps.close();
+                return true;
+
+            } catch (SQLDataException ex) {
+                System.err.println("[Conta] - Erro ao excluir dados " + ex.getMessage());
+            } catch (Exception ex) {
+                System.err.println("[Conta] - Erro geral " + ex.getMessage());
+            }
+        }
+        return false;
+    }
+    
 }

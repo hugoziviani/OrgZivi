@@ -23,17 +23,42 @@ public class MainTeste {
     
     public static void main (String args[]){
         
-       
         
         
     }
-    // testar algumas funcoes
+    // CLIENTE
+    public static void insereCliente(Cliente c){
+        DataSource ds = new DataSource();
+        ClienteDAO cliDao = new ClienteDAO (ds);
+        if(cliDao.insertOne_Cliente(c))System.out.println("Cliente " + c.getNome() + " inserido com sucesso!");
+    }
     public static void buscaCliente(String nome, int conta){
         DataSource ds = new DataSource();
         ClienteDAO cliDao = new ClienteDAO(ds);
         Cliente buscado = new Cliente();
         buscado = cliDao.readOne_Cliente(nome, conta);
         buscado.printCliente();
+    } 
+    public static void atualizaCliente (){
+        DataSource ds = new DataSource();
+        ClienteDAO cliDao = new ClienteDAO(ds);
+        
+        cliDao.update_Cliente(cliDao.readOne_Cliente("Hugo1", 0) ,new Cliente("Jozias", 23, "Jordel manancebis", 100000));//) System.out.println("Cliente atualizado com sucesso");;
+    
+    }
+    public static void removeCliente (){
+        DataSource ds = new DataSource();
+        ClienteDAO cliDao = new ClienteDAO (ds);
+        cliDao.remove_Cliente(new Cliente ("Hugo4",0, "", 0));
+    }
+    
+    
+    // CONTA
+    public static void insereConta(Conta c){
+        DataSource ds = new DataSource();
+        ContaDAO contaDao = new ContaDAO(ds);
+        if(contaDao.insertOne_Contas(c)) System.out.println("Conta " + c.getId_conta()+ " inserida com sucesso!");
+    
     }
     public static void buscaConta (int conta){
         DataSource ds = new DataSource();
@@ -42,7 +67,21 @@ public class MainTeste {
         buscada = contaDao.readOne_Contas(conta);
         buscada.printConta();
     }
-    public static void buscaTransacoes(int conta){
+    public static void atualizaConta (){
+        DataSource ds = new DataSource();
+        ContaDAO contaDao = new ContaDAO(ds);
+        contaDao.update_Conta(new Conta(400000, 0), new Conta (400000, 33333.3f));
+    }
+    public static void removeConta (){
+        DataSource ds = new DataSource();
+        ContaDAO contaDao = new ContaDAO(ds);
+        contaDao.delete_Conta(new Conta(32000, 0));
+    
+    }
+    
+    
+    // TRANSACOES
+    public static void buscaTransacoes (int conta){
         DataSource ds = new DataSource();
         TransacaoDAO tranDao = new TransacaoDAO(ds);
         ArrayList <Transacao> tr = new ArrayList<Transacao>();
@@ -52,22 +91,13 @@ public class MainTeste {
         }
         
     }
-    public static void insereCliente(Cliente c){
-        DataSource ds = new DataSource();
-        ClienteDAO cliDao = new ClienteDAO (ds);
-        if(cliDao.insertOne_Cliente(c))System.out.println("Cliente " + c.getNome() + " inserido com sucesso!");
-    }
-    public static void insereConta(Conta c){
-        DataSource ds = new DataSource();
-        ContaDAO contaDao = new ContaDAO(ds);
-        if(contaDao.insertOne_Contas(c)) System.out.println("Conta " + c.getId_conta()+ " inserida com sucesso!");
-    
-    }
     public static void insereTransacao (Transacao t){
         DataSource ds = new DataSource();
         TransacaoDAO transDao = new TransacaoDAO(ds);
         if(transDao.insertOne_Transacao(t)) System.out.println("Transacao de " + t.getValor()+ " inserida com sucesso!");
     }
+    
+    
     public void testesMain(){
     
     DataSource ds = new DataSource();

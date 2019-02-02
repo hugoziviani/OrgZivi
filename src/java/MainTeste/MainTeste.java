@@ -23,16 +23,20 @@ public class MainTeste {
     
     public static void main (String args[]){
         
+        Date dataAtual = new Date();
         
+        int n_conta = 40041;
+        String identificcao = dataAtual.toString()+"-"+ String.valueOf(n_conta);
         
+        insereTransacao(new Transacao (identificcao, n_conta, 2.3f));
     }
     // CLIENTE
-    public static void insereCliente(Cliente c){
+    public static void insereCliente (Cliente c){
         DataSource ds = new DataSource();
         ClienteDAO cliDao = new ClienteDAO (ds);
         if(cliDao.insertOne_Cliente(c))System.out.println("Cliente " + c.getNome() + " inserido com sucesso!");
     }
-    public static void buscaCliente(String nome, int conta){
+    public static void buscaCliente (String nome, int conta){
         DataSource ds = new DataSource();
         ClienteDAO cliDao = new ClienteDAO(ds);
         Cliente buscado = new Cliente();
@@ -54,7 +58,7 @@ public class MainTeste {
     
     
     // CONTA
-    public static void insereConta(Conta c){
+    public static void insereConta (Conta c){
         DataSource ds = new DataSource();
         ContaDAO contaDao = new ContaDAO(ds);
         if(contaDao.insertOne_Contas(c)) System.out.println("Conta " + c.getId_conta()+ " inserida com sucesso!");
@@ -95,6 +99,14 @@ public class MainTeste {
         DataSource ds = new DataSource();
         TransacaoDAO transDao = new TransacaoDAO(ds);
         if(transDao.insertOne_Transacao(t)) System.out.println("Transacao de " + t.getValor()+ " inserida com sucesso!");
+    }
+    public static void removeTransacao (Transacao t){
+        DataSource ds = new DataSource();
+        TransacaoDAO transDao = new TransacaoDAO(ds);
+        if(transDao.delete_Transacao(t)) System.out.println("Transacao de " + t.getValor()+ " removida com sucesso!");
+    
+    
+    
     }
     
     

@@ -49,10 +49,11 @@ public class Cliente {
         this.n_conta = n_conta;
     }
     
-    
     public void printCliente(){    
         System.out.printf("Nome: %s Idade: %d Endereço: %s Conta: %d \n",this.getNome(), this.getIdade(), this.getEndereco(), this.getN_conta());
     }
+    
+    
     
     
     

@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>Cliente</servlet-name>
+        <servlet-class>WebSource.Cliente</servlet-class>
+        <init-param>
+            <param-name>nome</param-name>
+            <param-value>string</param-value>
+        </init-param>
+        <init-param>
+            <param-name>idade</param-name>
+            <param-value>int</param-value>
+        </init-param>
+        <init-param>
+            <param-name>endereco</param-name>
+            <param-value>String</param-value>
+        </init-param>
+        <init-param>
+            <param-name>id_conta</param-name>
+            <param-value>int</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Cliente</servlet-name>
+        <url-pattern>/Cliente</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

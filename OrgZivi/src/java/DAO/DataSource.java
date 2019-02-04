@@ -33,7 +33,7 @@ public class DataSource {
             //concatenar para formar a string de conexão
             String url = "jdbc:mysql://"+hostname+":"+porta+"/"+database;
             
-            DriverManager.registerDriver(new com.mysql.jdbc.Driver()); //registro do driver no banco
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver()); //registro do driver no banco
             conection = DriverManager.getConnection(url, username, password);
             
             System.out.println("DEU CERTO!!");

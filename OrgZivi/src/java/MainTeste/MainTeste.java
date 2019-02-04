@@ -23,8 +23,7 @@ public class MainTeste {
     
     public static void main (String args[]){
         
-        buscaTransacoes(40041);
-        removeTransacao(new Transacao ("Sat Feb 02 13:42:20 BRST 201940041",0,0f));
+        insereCliente(new Cliente("Hugo", 23, "Rua José da lapa", 34500));
     }
     // CLIENTE
     public static void insereCliente (Cliente c){

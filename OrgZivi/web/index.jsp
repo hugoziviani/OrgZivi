@@ -15,12 +15,18 @@
     <body>
         <form action ="cadastroCliente.jsp" >
         <h1>Bem vindo ao ZiviBank - aqui seu dinheiro rende!</h1>
-        <label>Olá!</label>
-        <br><br><br>
+        <label>Escolha sua opção:</label>
+        <br><br><br><br>
         <input type="submit" value="Novo Cliente"/>
         </form>
-        
-            
+        <br>
+        <form action="usuarioSalvo.jsp">
+            <input type="submit" value="Consulta de Conta" />
+        </form>
+        <br>
+        <form action="transacoesZiviBank.jsp">
+            <input type="submit" value="Transações do ZiviBank" />
+        </form>    
        
         
 
